@@ -1,0 +1,11 @@
+type: object
+title: User
+properties:
+  id:
+    type: string
+  firstName:
+    type: string
+  lastName:
+    type: string
+required: [ id, firstName, lastName ]
+additionalProperties: false

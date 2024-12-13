@@ -1,0 +1,81 @@
+openapi: "3.0.0"
+info:
+  version: 0.1.0
+  title: Vue Demo API
+  description: API for the Vue demo project
+servers:
+  - url: http://localhost:8080/api
+tags:
+- name: "Ping"
+  description: "For server status"
+- name: "User"
+  description: "Users"
+
+paths:
+  /ping:
+    get:
+      tags: [ Ping ]
+      description: |
+        Returns a lifecheck result.
+      operationId: getPing
+      responses:
+        '200':
+          description: Lifecheck data.
+          content:
+            application/json:
+              schema:
+                $ref: ping-response.yaml
+  /users:
+    get:
+      tags: [ User ]
+      responses:
+        '200':
+          description: "List of all users"
+          content:
+            application/json:
+              schema:
+                 type: array
+                 items:
+                   $ref: user.yaml
+
+  /users/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      tags: [ User ]
+      responses:
+        '200':
+          description: "Return user by id"
+          content:
+            application/json:
+              schema:
+                 $ref: user.yaml
+        '404':
+          description: "No user found"
+          content:
+            application/json:
+              schema:
+                $ref: error.yaml
+    put:
+      tags: [ User ]
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: user.yaml
+      responses:
+        '200':
+          description: "Update and return user by id"
+          content:
+            application/json:
+              schema:
+                $ref: user.yaml
+
+components:
+  schemas: {}
+  examples: {}
+  parameters: {}

@@ -1,0 +1,16 @@
+type: object
+title: Error
+properties:
+  timestamp:
+    type: number
+    format: timestamp
+  message:
+    type: string
+  status:
+    type: number
+  error:
+    type: string
+  path:
+    type: string
+required: [ message, timestamp, status, error, path ]
+additionalProperties: false

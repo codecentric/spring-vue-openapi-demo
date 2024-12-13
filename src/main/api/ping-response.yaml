@@ -1,0 +1,17 @@
+type: object
+title: PingResponse
+properties:
+  name:
+    type: string
+  version:
+    type: string
+  buildTime:
+    type: string
+  activeProfiles:
+    type: array
+    items:
+      type: string
+  serverTime:
+    type: string
+required: [ name, version, buildTime, activeProfiles, serverTime ]
+additionalProperties: false
