@@ -20,8 +20,8 @@ Open in Browser: [Start app](http://localhost:5173/)
 
 ## Further reading
 
-* Part 1 of blog post: TODO (DE and EN)
-* Part 2 of blog post: TODO (DE and EN)
+* Part 1 of blog post: [German](https://www.codecentric.de/wissens-hub/blog/spring-und-vue-ein-setup-fuer-kleine-projekte-teil-1) and [English](https://www.codecentric.de/wissens-hub/blog/spring-and-vue-a-setup-for-small-projects-part-1) (Available Jan 10, 2025)
+* Part 2 of blog post: [German](https://www.codecentric.de/wissens-hub/blog/spring-und-vue-ein-setup-fuer-kleine-projekte-teil-2) and [English](https://www.codecentric.de/wissens-hub/blog/spring-and-vue-a-setup-for-small-projects-part-2) (Available Jan 17, 2025)
 
 * Similar setup, but uglier bookmarks: [spring-boot-vuejs](https://github.com/jonashackt/spring-boot-vuejs)
 * [Dev-Tools for Chrome](https://chrome.google.com/webstore/detail/vuejs-devtools/ljjemllljcmogpfapbkkighbhhppjdbg)
