@@ -1,24 +1,23 @@
 package de.codecentric.vue.api;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import org.springframework.boot.autoconfigure.web.reactive.WebFluxAutoConfiguration;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Controller;
 
 import de.codecentric.generated.api.UsersApiDelegate;
 import de.codecentric.generated.model.User;
 import de.codecentric.vue.NotFoundException;
 
-@Service
+@Controller
 public class UserControllerImplementation implements UsersApiDelegate {
 
-    private final HashMap<String, User> usersById = new HashMap<>(Stream.of(
+    private final ConcurrentHashMap<String, User> usersById = new ConcurrentHashMap<>(Stream.of(
             new User("1", "Max", "Musterman"),
             new User("2", "Lisa", "Müller"),
             new User("3", "John", "Doe"),
@@ -34,25 +33,25 @@ public class UserControllerImplementation implements UsersApiDelegate {
     ).collect(Collectors.toMap(User::getId, Function.identity())));
 
     @Override
-	public ResponseEntity<List<User>> usersGet() {
-    	List<User> users = new ArrayList<User>(usersById.values());
-		return ResponseEntity.ok(users);
-	}
+    public ResponseEntity<List<User>> usersGet() {
+        List<User> users = new ArrayList<User>(usersById.values());
+        return ResponseEntity.ok(users);
+    }
 
-	@Override
-	public ResponseEntity<User> usersIdGet(String id) {
-		User user = usersById.get(id);
-		if (user == null) {
-			throw new NotFoundException("User not found");
-		} else {
-			return ResponseEntity.ok(user);
-		}
-	}
+    @Override
+    public ResponseEntity<User> usersIdGet(String id) {
+        User user = usersById.get(id);
+        if (user == null) {
+            throw new NotFoundException("User not found");
+        } else {
+            return ResponseEntity.ok(user);
+        }
+    }
 
-	@Override
-	public ResponseEntity<User> usersIdPut(String id, User user) {
-		usersById.put(id, user);
-		return ResponseEntity.ok(user);
-	}
+    @Override
+    public ResponseEntity<User> usersIdPut(String id, User user) {
+        usersById.put(id, user);
+        return ResponseEntity.ok(user);
+    }
 
 }
